@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Quitar clase activa de todos los botones
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const category = btn.getAttribute('data-category');
+      const category = btn.getAttribute('data-category').toLowerCase().trim();
       sections.forEach(section => {
-        if (category === 'Todos' || section.querySelector('h2').textContent === category) {
+        const sectionCategory = section.querySelector('h2').textContent.toLowerCase().trim();
+        if (category === 'todos' || sectionCategory === category) {
           section.style.display = 'block';
         } else {
           section.style.display = 'none';
